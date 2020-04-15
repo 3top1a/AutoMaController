@@ -1,4 +1,8 @@
 import GUI as gui
+import Classes as classes
 
-if __name__ == "__main__":
-    gui.Start()
+
+def __init__():
+    
+
+__init__()
