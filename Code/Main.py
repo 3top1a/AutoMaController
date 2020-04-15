@@ -33,13 +33,14 @@ def run():
             i.run()
 
 def __init__():
-    
+
     x = agent.Agent()
     x.IP = "localhost"
     x.Port = 6667
     agents.append(x)
 
-    #threading(shell())
     threading( run() )
+    threading(shell())
+    
 
 __init__()

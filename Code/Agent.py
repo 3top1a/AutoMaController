@@ -7,7 +7,7 @@ class Agent:
 
     def run(shit):
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            s.bind((Ip, Port))
+            s.bind(("localhost", 6667))
             s.listen()
             conn, addr = s.accept()
             with conn:
