@@ -4,7 +4,7 @@ import Agent as agent
 import subprocess
 import threading
 
-from multiprocessing import Process
+import multiprocessing 
 
 agents = []
 
@@ -42,6 +42,7 @@ def __init__():
 
     while(True):
         run()
+        #shell()
     
 
 __init__()
