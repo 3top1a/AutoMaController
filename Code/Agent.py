@@ -29,8 +29,16 @@ class Agent:
                 else:
                     self.Status = 1
 
-                btr_data = ""
 
-                btr_data += ("Position X: " + data[1] + " Y: " + data[2] + "Z:" + data[3])
+                X = data[1] #[1] = x
+                Y = data[2] #[2] = y
+                Z = data[3] #[3] = z
+                Hp = data[4] #[4] = hp
+                MaxHp = data[5] #[5] = max hp
+                Name = data[6] #[6] = name
+                Dm = data[7] #[7] = dimension
+                XpLevel = data[8] #[8] = exp level
+
+                btr_data = ( Name + " -- Position X: " + X + " Y: " + Y + " Z: " + Z + " in dimension " + Dm + "  Health: " + Hp + "/" + MaxHp + " exp level: " + XpLevel)
 
                 print(btr_data)
