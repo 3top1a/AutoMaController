@@ -41,4 +41,6 @@ class Agent:
 
                 btr_data = ( Name + " -- Position X: " + X + " Y: " + Y + " Z: " + Z + " in dimension " + Dm + "  Health: " + Hp + "/" + MaxHp + " exp level: " + XpLevel)
 
+                s.send("YOU CUNT!!".encode())
+
                 print(btr_data)
