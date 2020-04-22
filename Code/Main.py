@@ -21,9 +21,9 @@ def __init__():
 
 
     while(True):
-        Shell = shell.Prompt()
-        Shell.prompt = "$"
-        Shell.cmdloop('Starting prompt...')
+        #Shell = shell.Prompt()
+        #Shell.prompt = "$"
+        #Shell.cmdloop('Starting prompt...')
 
         run()
         #shell()

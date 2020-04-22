@@ -14,7 +14,7 @@ class Agent:
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.connect(("127.0.0.1", 6667))
             while(True):
-                data = s.recv(4096)
+                data = s.recv(1024)
 
                 if not data:
                     break
@@ -41,6 +41,9 @@ class Agent:
 
                 btr_data = ( Name + " -- Position X: " + X + " Y: " + Y + " Z: " + Z + " in dimension " + Dm + "  Health: " + Hp + "/" + MaxHp + " exp level: " + XpLevel)
 
-                s.send("YOU CUNT!!".encode())
+
+                command = "goto"
+
+                s.send(command.encode())
 
                 print(btr_data)
