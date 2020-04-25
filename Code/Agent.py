@@ -29,21 +29,24 @@ class Agent:
                 else:
                     self.Status = 1
 
+                Code = data[1] #[1] = Return code. 100 = SUCCESS : 101 = IN MAIN MENU
 
-                X = data[1] #[1] = x
-                Y = data[2] #[2] = y
-                Z = data[3] #[3] = z
-                Hp = data[4] #[4] = hp
-                MaxHp = data[5] #[5] = max hp
-                Name = data[6] #[6] = name
-                Dm = data[7] #[7] = dimension
-                XpLevel = data[8] #[8] = exp level
+                if(Code == "100"):
+                    X = data[2] #[2] = x
+                    Y = data[3] #[3] = y
+                    Z = data[4] #[4] = z
+                    Hp = data[5] #[5] = hp
+                    MaxHp = data[6] #[6] = max hp
+                    Name = data[7] #[7] = name
+                    Dm = data[8] #[8] = dimension
+                    XpLevel = data[9] #[9] = exp level
 
-                btr_data = ( Name + " -- Position X: " + X + " Y: " + Y + " Z: " + Z + " in dimension " + Dm + "  Health: " + Hp + "/" + MaxHp + " exp level: " + XpLevel)
+                    btr_data = ( Name + " -- Position X: " + X + " Y: " + Y + " Z: " + Z + " in dimension " + Dm + "  Health: " + Hp + "/" + MaxHp + " exp level: " + XpLevel)
+                    print(btr_data)
+                else:
+                    print("Main menu")
 
 
-                command = "goto"
+                #command = ". toggle freecam"
 
-                s.send(command.encode())
-
-                print(btr_data)
+                #s.send(command.encode())
