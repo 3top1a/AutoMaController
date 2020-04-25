@@ -2,9 +2,7 @@ import GUI as gui
 import Agent as agent
 import Shell as shell
 
-import subprocess
-import threading
-import multiprocessing 
+import subprocess, threading, multiprocessing 
 
 agents = []
 

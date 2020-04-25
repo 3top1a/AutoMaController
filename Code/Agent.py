@@ -23,15 +23,11 @@ class Agent:
 
                 data = str(data).split(' ')
 
-                if(len(data) < 2):
-                    self.Status = 0
-                    return
-                else:
-                    self.Status = 1
-
                 Code = data[1] #[1] = Return code. 100 = SUCCESS : 101 = IN MAIN MENU
 
                 if(Code == "100"):
+                    self.Status = 1
+
                     X = data[2] #[2] = x
                     Y = data[3] #[3] = y
                     Z = data[4] #[4] = z
@@ -44,6 +40,7 @@ class Agent:
                     btr_data = ( Name + " -- Position X: " + X + " Y: " + Y + " Z: " + Z + " in dimension " + Dm + "  Health: " + Hp + "/" + MaxHp + " exp level: " + XpLevel)
                     print(btr_data)
                 else:
+                    self.Status = 0
                     print("Main menu")
 
 
