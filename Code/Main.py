@@ -2,7 +2,7 @@ import GUI as gui
 import Agent as agent
 import Shell as shell
 
-import subprocess, threading, multiprocessing 
+import subprocess, threading, multiprocessing
 
 agents = []
 
@@ -18,13 +18,7 @@ def __init__():
     agents.append(x)
 
 
-    while(True):
-        #Shell = shell.Prompt()
-        #Shell.prompt = "$"
-        #Shell.cmdloop('Starting prompt...')
-
-        run()
-        #shell()
+    run()
     
 
 __init__()
