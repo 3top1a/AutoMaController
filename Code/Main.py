@@ -1,12 +1,22 @@
 import GUI as gui
 import Agent as agent
-import Shell as shell
 
-import subprocess, threading, multiprocessing
+import subprocess, threading, multiprocessing, _thread
+import tkinter as tk
 
 agents = []
 
-def run():
+def StartWindow():
+    window = tk.Tk()
+    window.title("M.A.C.C")
+    window.minsize(150,150)
+
+    B = tk.Button(window, text ="Connect", command = RunAgent)
+    B.pack()
+
+    window.mainloop()
+
+def RunAgent():
     for i in agents:
         i.run()
 
@@ -18,7 +28,6 @@ def __init__():
     agents.append(x)
 
 
-    run()
-    
+    StartWindow()
 
 __init__()
