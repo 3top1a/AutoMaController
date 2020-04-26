@@ -1,8 +1,6 @@
 import Agent as agent
 
-import subprocess
 import threading
-import multiprocessing
 import tkinter as tk
 import tkinter.ttk
 
@@ -48,7 +46,7 @@ def __init__():
     x.Port = 6667
     agents.append(x)
 
-    threading._start_new_thread(StartGUI, ())
-    StartGUI()
+    x = threading.Thread(target=StartGUI, args=())
+    x.start()
 
 __init__()
