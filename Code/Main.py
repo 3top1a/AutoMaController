@@ -1,24 +1,44 @@
-import GUI as gui
 import Agent as agent
 
-import subprocess, threading, multiprocessing, _thread
+import subprocess
+import threading
+import multiprocessing
 import tkinter as tk
+import tkinter.ttk
+
+
+### SCRIPT STRUCTURE
+## AGENT MANAGMENT
+## GUI
+## CODE THAT ACTUALLY RUNS
+
 
 agents = []
 
-def StartWindow():
-    window = tk.Tk()
-    window.title("M.A.C.C")
-    window.minsize(150,150)
 
-    B = tk.Button(window, text ="Connect", command = RunAgent)
-    B.pack()
 
-    window.mainloop()
+
 
 def RunAgent():
     for i in agents:
         i.run()
+
+def StartGUI():
+    window = tk.Tk()
+    window.title("M.A.C.C")
+    window.minsize(150,150)
+
+    #ADD AGENT BUTTON
+    ConnectButton = tk.Button(window, text ="Connect", command = RunAgent)
+    ConnectButton.pack()
+
+    #TAB
+    tab_parent = tkinter.ttk.Notebook(window)
+    
+    page1 = tkinter.ttk.Frame(tab_parent)
+    tab_parent.add(page1, text='Tab1')
+
+    window.mainloop()
 
 def __init__():
 
@@ -26,8 +46,6 @@ def __init__():
     x.IP = "localhost"
     x.Port = 6667
     agents.append(x)
-
-
-    StartWindow()
+    StartGUI()
 
 __init__()
