@@ -13,16 +13,15 @@ import tkinter.ttk
 ## CODE THAT ACTUALLY RUNS
 
 
+
+##AGENT MANAGMENT
 agents = []
-
-
-
-
 
 def RunAgent():
     for i in agents:
         i.run()
 
+##GUI
 def StartGUI():
     window = tk.Tk()
     window.title("M.A.C.C")
@@ -40,12 +39,16 @@ def StartGUI():
 
     window.mainloop()
 
+
+##CODE THAT ACTUALLY RUNS (and maybe works...)
 def __init__():
 
     x = agent.Agent()
     x.IP = "localhost"
     x.Port = 6667
     agents.append(x)
+
+    threading._start_new_thread(StartGUI, ())
     StartGUI()
 
 __init__()
