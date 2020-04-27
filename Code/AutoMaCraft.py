@@ -24,7 +24,7 @@ class Main():
         GUI = gui.GUI(self)
 
         while(1):
-            #GUI.ChangeDatalabel( a.DataString() )
+            GUI.ChangeDatalabel( self.Agents[0].DataString() )
             self.RunAgents()
 
 

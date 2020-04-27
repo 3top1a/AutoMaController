@@ -4,7 +4,11 @@ class Agent():
 
     IP = None
     Port = None
+
+    s = None
+    data = None
     
+    Code = None
     Status = None
     X = None
     Y = None
@@ -16,37 +20,36 @@ class Agent():
     XpLevel = None
 
     def Run(self):
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            s.connect((self.IP, self.Port))
-            while(True):
-                data = s.recv(1024)
+        try:
+            self.data = ""
+            self.data = self.s.recv(1024)
+            self.data = str(self.data).split(' ')
+        except:
+            self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            self.s.connect(('localhost', 6667))
 
-                if not data:
-                    break
+        try:
+            self.Code = self.data[1] #[1] = Return code. 100 = SUCCESS : 101 = IN MAIN MENU
 
-                #parsing
+            if(self.Code == "100"):
+                self.Status = 1
 
-                data = str(data).split(' ')
+                self.X = self.data[2] #[2] = x
+                self.Y = self.data[3] #[3] = y
+                self.Z = self.data[4] #[4] = z
+                self.Hp = self.data[5] #[5] = hp
+                self.MaxHp = self.data[6] #[6] = max hp
+                self.Name = self.data[7] #[7] = name
+                self.Dm = self.data[8] #[8] = dimension
+                self.XpLevel = self.data[9] #[9] = exp level
 
-                Code = data[1] #[1] = Return code. 100 = SUCCESS : 101 = IN MAIN MENU
-
-                if(Code == "100"):
-                    self.Status = 1
-
-                    self.X = data[2] #[2] = x
-                    self.Y = data[3] #[3] = y
-                    self.Z = data[4] #[4] = z
-                    self.Hp = data[5] #[5] = hp
-                    self.MaxHp = data[6] #[6] = max hp
-                    self.Name = data[7] #[7] = name
-                    self.Dm = data[8] #[8] = dimension
-                    self.XpLevel = data[9] #[9] = exp level
-
-                    #btr_data = ( Name + " -- Position X: " + X + " Y: " + Y + " Z: " + Z + " in dimension " + Dm + "  Health: " + Hp + "/" + MaxHp + " exp level: " + XpLevel)
-                    #print(btr_data)
-                else:
-                    self.Status = 0
-                    print("Main menu")
+                #btr_data = ( Name + " -- Position X: " + X + " Y: " + Y + " Z: " + Z + " in dimension " + Dm + "  Health: " + Hp + "/" + MaxHp + " exp level: " + XpLevel)
+                #print(btr_data)
+            else:
+                self.Status = 0
+                print("Main menu")
+        except:
+            print("error parsing")
 
     def DataString(self):
         return "Position: \n X: " + str(self.X) + " \n Y: " + str(self.Y) + "\n Z: " + str(self.Z) 
