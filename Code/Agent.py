@@ -2,6 +2,15 @@ import socket, time, re, multiprocessing
 
 class Agent:
 
+    X = None
+    Y = None
+    Z = None
+    Hp = None
+    MaxHp = None
+    Name = None
+    Dm = None
+    XpLevel = None
+
     Ip = ""
     Port = 6667
 

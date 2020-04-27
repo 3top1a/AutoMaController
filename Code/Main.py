@@ -22,19 +22,20 @@ def RunAgent():
 ##GUI
 def StartGUI():
     window = tk.Tk()
-    window.title("M.A.C.C")
+    SideLabelVar = tk.StringVar()
+    window.title("AutoMa Craft Controller")
     window.minsize(150,150)
 
     #ADD AGENT BUTTON
     ConnectButton = tk.Button(window, text ="Connect", command = RunAgent)
     ConnectButton.pack()
 
-    #TAB
-    tab_parent = tkinter.ttk.Notebook(window)
-    
-    page1 = tkinter.ttk.Frame(tab_parent)
-    tab_parent.add(page1, text='Tab1')
+    SideLabel = tk.Label(window, textvariable = SideLabelVar)
+    SideLabel.pack()
 
+    while(True):
+        SideLabelVar.set(agents[0].X)
+        window.update_idletasks()
     window.mainloop()
 
 
@@ -48,5 +49,7 @@ def __init__():
 
     x = threading.Thread(target=StartGUI, args=())
     x.start()
+
+    RunAgent()
 
 __init__()
