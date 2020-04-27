@@ -3,7 +3,10 @@ import threading
 
 class GUI(threading.Thread):
 
-    def __init__(self):
+    Main = None
+
+    def __init__(self, _main):
+        Main = _main
         threading.Thread.__init__(self)
         self.start()
 

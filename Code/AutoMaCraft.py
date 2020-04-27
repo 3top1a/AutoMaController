@@ -4,11 +4,10 @@ import tkinter as tk
 import tkinter.ttk
 
 
+class Main():
+    def __init__(self):
+        GUI = gui.GUI(self)
 
-def __init__():
-    app = gui.GUI()
 
-    for i in range(100000):
-        print(i)
 
-__init__()
+main = Main()
