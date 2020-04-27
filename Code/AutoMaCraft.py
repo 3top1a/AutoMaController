@@ -1,4 +1,5 @@
 import GUI as gui
+import Agent as agent
 
 import tkinter as tk
 import tkinter.ttk
@@ -10,18 +11,21 @@ class Main():
 
     def RunAgents(self):
         for i in self.Agents:
-            RunIndAgent(i)
+            i.Run()
 
     def __init__(self):
-        
+
+        a = agent.Agent()
+        a.IP = "127.0.0.1"
+        a.Port = 6667
+
+        self.Agents.append(a)
 
         GUI = gui.GUI(self)
 
         while(1):
-            RunAgents()
-    
-    def RunIndAgent(self, ag):
-        pass
+            #GUI.ChangeDatalabel( a.DataString() )
+            self.RunAgents()
 
 
 

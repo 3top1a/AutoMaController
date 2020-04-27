@@ -27,6 +27,6 @@ class GUI(threading.Thread):
 
         self.root.mainloop()
     
-    def ChangeDatalabel(self):
+    def ChangeDatalabel(self, text):
         if(self.DataLabel != None):
-            self.DataLabel.config(text='ree')
+            self.DataLabel.config(text=text)
