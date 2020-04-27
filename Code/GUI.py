@@ -1,23 +1,32 @@
 import tkinter as tk
 import threading
+import os
 
 class GUI(threading.Thread):
 
     Main = None
 
+    DataLabel = None
+
     def __init__(self, _main):
-        Main = _main
+        self.Main = _main
         threading.Thread.__init__(self)
         self.start()
 
-    def callback(self):
-        self.root.quit()
+    def QuitCallback(self):
+        os._exit(os.EX_OK)
 
     def run(self):
         self.root = tk.Tk()
-        self.root.protocol("WM_DELETE_WINDOW", self.callback)
+        self.root.title("AutoMa Craft Controller")
+        self.root.minsize(150, 150)
+        self.root.protocol("WM_DELETE_WINDOW", self.QuitCallback)
 
-        label = tk.Label(self.root, text="Hello World")
-        label.pack()
+        self.DataLabel = tk.Label(self.root, text="")
+        self.DataLabel.pack()
 
         self.root.mainloop()
+    
+    def ChangeDatalabel(self):
+        if(self.DataLabel != None):
+            self.DataLabel.config(text='ree')
