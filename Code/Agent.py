@@ -27,8 +27,8 @@ class Agent():
     def Run(self):
         while(True):
             #self.data = ""
-            self.data = self.s.recv(1024*500)
-            self.data = str(self.data).split(' ')
+            data = self.s.recv(1024*500)
+            self.data = str(data).split(' ')
 
             self.Code = self.data[1]
 
@@ -44,8 +44,8 @@ class Agent():
                 self.Dm = self.data[8] #[8] = dimension
                 self.XpLevel = self.data[9] #[9] = exp level
 
-                #btr_data = ( Name + " -- Position X: " + X + " Y: " + Y + " Z: " + Z + " in dimension " + Dm + "  Health: " + Hp + "/" + MaxHp + " exp level: " + XpLevel)
-                #print(btr_data)
+                btr_data = ( self.Name + " -- Position X: " + self.X + " Y: " + self.Y + " Z: " + self.Z + " in dimension " + self.Dm + "  Health: " + self.Hp + "/" + self.MaxHp + " exp level: " + self.XpLevel)
+                print(btr_data)
             elif (self.Code == "101") :
                 self.Status = 0
                 print("Main menu")
