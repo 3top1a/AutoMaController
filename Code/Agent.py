@@ -1,4 +1,5 @@
 import socket
+import time
 
 class Agent():
 
@@ -19,17 +20,17 @@ class Agent():
     Dm = None
     XpLevel = None
 
-    def Run(self):
-        try:
-            self.data = ""
-            self.data = self.s.recv(1024)
-            self.data = str(self.data).split(' ')
-        except:
-            self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            self.s.connect(('localhost', 6667))
+    def Connect(self):
+        self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.s.connect(('127.0.0.1', 6667))
 
-        try:
-            self.Code = self.data[1] #[1] = Return code. 100 = SUCCESS : 101 = IN MAIN MENU
+    def Run(self):
+        while(True):
+            #self.data = ""
+            self.data = self.s.recv(1024*500)
+            self.data = str(self.data).split(' ')
+
+            self.Code = self.data[1]
 
             if(self.Code == "100"):
                 self.Status = 1
@@ -45,11 +46,11 @@ class Agent():
 
                 #btr_data = ( Name + " -- Position X: " + X + " Y: " + Y + " Z: " + Z + " in dimension " + Dm + "  Health: " + Hp + "/" + MaxHp + " exp level: " + XpLevel)
                 #print(btr_data)
-            else:
+            elif (self.Code == "101") :
                 self.Status = 0
                 print("Main menu")
-        except:
-            print("error parsing")
+            else:
+                print("The data is fucked")
 
     def DataString(self):
         return "Position: \n X: " + str(self.X) + " \n Y: " + str(self.Y) + "\n Z: " + str(self.Z) 

@@ -10,22 +10,22 @@ class Main():
     Agents = []
 
     def RunAgents(self):
-        for i in self.Agents:
-            i.Run()
+        #for i in self.Agents:
+        pass
 
     def __init__(self):
 
         a = agent.Agent()
-        a.IP = "127.0.0.1"
-        a.Port = 6667
 
         self.Agents.append(a)
 
-        GUI = gui.GUI(self)
+        #GUI = gui.GUI(self)
+
+        #GUI.ChangeDatalabel( self.Agents[0].DataString() )
+        self.Agents[0].Connect()
 
         while(1):
-            GUI.ChangeDatalabel( self.Agents[0].DataString() )
-            self.RunAgents()
+            self.Agents[0].Run()
 
 
 
