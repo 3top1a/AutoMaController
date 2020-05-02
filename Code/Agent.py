@@ -45,11 +45,18 @@ class Agent():
                 btr_data = ( self.Name + " -- Position X: " + self.X + " Y: " + self.Y + " Z: " + self.Z + " in dimension " + self.Dm + "  Health: " + self.Hp + "/" + self.MaxHp + " exp level: " + self.XpLevel)
                 print(btr_data)
                 
-            elif (self.Code == "101") :
+            elif (self.Code == "101"):
                 self.Status = 0
                 print("Main menu")
             else:
                 print("The data is fucked")
 
     def DataString(self):
-        return "Position: \n X: " + str(self.X) + " \n Y: " + str(self.Y) + "\n Z: " + str(self.Z) 
+        dataTemplate = None
+
+        if(self.Status == 0):
+            return "Main menu"
+        elif(self.Status == 1):
+            dataTemplate = "Name:\n{}\n \nPosition: \nX: {} \nY: {} \nZ: {} \n\nHealth: \n{} / {}"
+
+            return dataTemplate.format(self.Name, self.X, self.Y, self.Z, self.Hp, self.MaxHp)

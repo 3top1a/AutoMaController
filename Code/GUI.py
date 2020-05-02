@@ -23,6 +23,7 @@ class GUI(threading.Thread):
         self.root.protocol("WM_DELETE_WINDOW", self.QuitCallback)
 
         self.DataLabel = tk.Label(self.root, text="")
+        self.DataLabel.config(anchor=tk.W)
         self.DataLabel.pack()
 
         def update():
