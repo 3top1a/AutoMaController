@@ -15,7 +15,7 @@ class GUI(threading.Thread):
 
     def QuitCallback(self):
         os._exit(os.EX_OK)
-
+    
     def run(self):
         self.root = tk.Tk()
         self.root.title("AutoMa Craft Controller")
@@ -25,6 +25,13 @@ class GUI(threading.Thread):
         self.DataLabel = tk.Label(self.root, text="")
         self.DataLabel.pack()
 
+        def update():
+            to = str( self.Main.Agents[0].DataString() )
+
+            self.ChangeDatalabel(to)
+            self.root.after(100, update)
+
+        self.root.after(100, update)
         self.root.mainloop()
     
     def ChangeDatalabel(self, text):

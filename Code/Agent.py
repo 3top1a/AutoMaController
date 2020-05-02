@@ -26,26 +26,25 @@ class Agent():
 
     def Run(self):
         while(True):
-            #self.data = ""
-            data = self.s.recv(1024*500)
-            self.data = str(data).split(' ')
-
-            self.Code = self.data[1]
+            data = self.s.recv(1024)
+            data = str(data).split(' ')
+            self.Code = data[1]
 
             if(self.Code == "100"):
                 self.Status = 1
 
-                self.X = self.data[2] #[2] = x
-                self.Y = self.data[3] #[3] = y
-                self.Z = self.data[4] #[4] = z
-                self.Hp = self.data[5] #[5] = hp
-                self.MaxHp = self.data[6] #[6] = max hp
-                self.Name = self.data[7] #[7] = name
-                self.Dm = self.data[8] #[8] = dimension
-                self.XpLevel = self.data[9] #[9] = exp level
+                self.X = str( data[2] ) #[2] = x
+                self.Y = str( data[3] ) #[3] = y
+                self.Z = str( data[4] ) #[4] = z
+                self.Hp = str( data[5] ) #[5] = hp
+                self.MaxHp = str( data[6] ) #[6] = max hp
+                self.Name = str( data[7] ) #[7] = name
+                self.Dm = str( data[8] ) #[8] = dimension
+                self.XpLevel = str( data[9] ) #[9] = exp level
 
                 btr_data = ( self.Name + " -- Position X: " + self.X + " Y: " + self.Y + " Z: " + self.Z + " in dimension " + self.Dm + "  Health: " + self.Hp + "/" + self.MaxHp + " exp level: " + self.XpLevel)
                 print(btr_data)
+                
             elif (self.Code == "101") :
                 self.Status = 0
                 print("Main menu")

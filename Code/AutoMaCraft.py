@@ -19,9 +19,8 @@ class Main():
 
         self.Agents.append(a)
 
-        #GUI = gui.GUI(self)
+        GUI = gui.GUI(self)
 
-        #GUI.ChangeDatalabel( self.Agents[0].DataString() )
         self.Agents[0].Connect()
 
         while(1):
