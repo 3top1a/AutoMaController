@@ -23,6 +23,7 @@ class Agent():
     def Connect(self):
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.s.connect(('127.0.0.1', 6667))
+        self.s.send(b"\n")
 
     def Run(self):
         while(True):
@@ -50,6 +51,9 @@ class Agent():
                 print("Main menu")
             else:
                 print("The data is fucked")
+
+    def send(self, datas):
+        self.s.send(bytes(datas + "\n","utf-8"))
 
     def DataString(self):
         dataTemplate = None

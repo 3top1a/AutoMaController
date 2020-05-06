@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface>
+  <object id="yeet" class="ttk.Frame">
+    <property name="height">200</property>
+    <property name="width">200</property>
+    <layout>
+      <property name="column">0</property>
+      <property name="propagate">True</property>
+      <property name="row">0</property>
+    </layout>
+    <child>
+      <object id="LeftDataReadouts" class="ttk.Panedwindow">
+        <property name="height">500</property>
+        <property name="orient">horizontal</property>
+        <property name="width">250</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">0</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object id="MiddleMapReadout" class="ttk.Panedwindow">
+        <property name="height">500</property>
+        <property name="orient">horizontal</property>
+        <property name="width">500</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="propagate">True</property>
+          <property name="row">0</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object id="RightDataSending" class="ttk.Panedwindow">
+        <property name="height">500</property>
+        <property name="orient">horizontal</property>
+        <property name="width">200</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="propagate">True</property>
+          <property name="row">0</property>
+          <property name="sticky">e</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object id="DataReadouts" class="ttk.Label">
+        <property name="anchor">w</property>
+        <property name="font">TkTextFont</property>
+        <property name="text" translatable="yes">Label_2</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">0</property>
+          <property name="sticky">nw</property>
+        </layout>
+      </object>
+    </child>
+  </object>
+</interface>
