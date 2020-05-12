@@ -35,11 +35,11 @@ class GUI(threading.Thread):
         #Probably binds the close button to self.QuitCallback
         self.root.protocol("WM_DELETE_WINDOW", self.QuitCallback)
         #Set the app's theme
-        self.Style = tk.ttk.Style()
+        #self.Style = tk.ttk.Style()
         #print(self.Style.theme_names())
         #Doesnt work on my pc for some reason
         #FIXME
-        self.Style.theme_use('alt')
+        #self.Style.theme_use('alt')
 
         #Left frame
         self.LeftAreaFrame = tk.Frame(self.root, bg='#333', width=500)

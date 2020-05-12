@@ -1,4 +1,5 @@
 import socket
+import time
 
 class Agent():
 
@@ -49,8 +50,11 @@ class Agent():
                 print("Main menu")
             else:
                 print("The data is fucked")
-
+            
+            #Wait before sending the "send data again please" packet
+            time.sleep(1/5)
             self.s.send(b"110\n")
+
 
     def send(self, datas):
         self.s.send(bytes(datas + "\n","utf-8"))
