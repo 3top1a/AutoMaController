@@ -5,6 +5,7 @@ import os
 class GUI(threading.Thread):
 
     Main = None
+    Style = None
 
     DataLabel = None
     LeftDataReadouts = None
@@ -23,10 +24,21 @@ class GUI(threading.Thread):
         os._exit(os.EX_OK)
     
     def run(self):
+        #Setup the window
         self.root = tk.Tk()
+        #Set the title
         self.root.title("AutoMa Craft Controller")
+        #Set the minimum size
         self.root.minsize(100, 100)
+        #I dont know what this does, i copied this from stack overflow
+        #Probably binds the close button to self.QuitCallback
         self.root.protocol("WM_DELETE_WINDOW", self.QuitCallback)
+        #Set the app's theme
+        self.Style = tk.ttk.Style()
+        #print(self.Style.theme_names())
+        #Doesnt work on my pc for some reason
+        #FIXME
+        self.Style.theme_use('alt')
 
         #Left frame
         self.LeftAreaFrame = tk.Frame(self.root, bg='#333', width=500)
@@ -41,7 +53,7 @@ class GUI(threading.Thread):
         self.DataFrame.pack(expand=True, fill='both', side='right', anchor='s')
 
         def send():
-            self.Main.Agents[0].send(".toggle freecam")
+            self.Main.Agents[0].send(self.DataEntry.get())
             
         
         #Button and entry

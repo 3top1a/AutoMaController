@@ -52,6 +52,8 @@ class Agent():
             else:
                 print("The data is fucked")
 
+            self.s.send(b"110\n")
+
     def send(self, datas):
         self.s.send(bytes(datas + "\n","utf-8"))
 
