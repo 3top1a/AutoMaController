@@ -1,9 +1,16 @@
-import GUI as gui
-import Agent as agent
+#!/usr/bin/env python
 
-import tkinter as tk
+import tkinter as tk  #Standard libraries
 import tkinter.ttk
 
+import GUI as gui  #Local libraries
+import Agent as agent
+
+
+
+__author__ = "3top1a"
+__license__ = "MIT"
+__status__ = "Development"
 
 class Main():
 

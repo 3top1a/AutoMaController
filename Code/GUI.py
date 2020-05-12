@@ -21,6 +21,7 @@ class GUI(threading.Thread):
         self.start()
 
     def QuitCallback(self):
+        #Exit the app
         os._exit(os.EX_OK)
     
     def run(self):
@@ -46,11 +47,11 @@ class GUI(threading.Thread):
 
         #Left Data Readouts
         self.DataLabel = tk.Label(self.LeftAreaFrame, text="yeet", height="20", width="40", justify=tk.LEFT, anchor="nw")
-        self.DataLabel.pack()
+        self.DataLabel.pack(expand=True, fill='both', side='left')
 
         #Data sending frame
-        self.DataFrame = tk.Frame(self.root, width=100, bg='white', height=200, relief='sunken', borderwidth=2)
-        self.DataFrame.pack(expand=True, fill='both', side='right', anchor='s')
+        self.DataFrame = tk.Frame(self.root, width=100, height=200)
+        self.DataFrame.pack(expand=True, fill='both', side='right')
 
         def send():
             self.Main.Agents[0].send(self.DataEntry.get())
