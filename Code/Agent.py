@@ -1,5 +1,4 @@
 import socket
-import time
 
 class Agent():
 
@@ -45,7 +44,6 @@ class Agent():
 
                 btr_data = ( self.Name + " -- Position X: " + self.X + " Y: " + self.Y + " Z: " + self.Z + " in dimension " + self.Dm + "  Health: " + self.Hp + "/" + self.MaxHp + " exp level: " + self.XpLevel)
                 print(btr_data)
-                
             elif (self.Code == "101"):
                 self.Status = 0
                 print("Main menu")

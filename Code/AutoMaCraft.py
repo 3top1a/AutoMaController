@@ -1,12 +1,7 @@
 #!/usr/bin/env python
 
-import tkinter as tk  #Standard libraries
-import tkinter.ttk
-
 import GUI as gui  #Local libraries
 import Agent as agent
-
-
 
 __author__ = "3top1a"
 __license__ = "MIT"
@@ -32,7 +27,5 @@ class Main():
 
         while(1):
             self.Agents[0].Run()
-
-
 
 main = Main()
