@@ -1,5 +1,6 @@
 # AutoMa Craft Controller
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/13eb9d5c080145cba25dcdf8d242f81c)](https://app.codacy.com/manual/3top1a/AutoMaController?utm_source=github.com&utm_medium=referral&utm_content=3top1a/AutoMaController&utm_campaign=Badge_Grade_Dashboard)
+![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability-percentage/3top1a/AutoMaController?style=for-the-badge)
+![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/3top1a/AutoMaController?style=for-the-badge)
 [![made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 [![GitHub](https://img.shields.io/github/license/3top1a/AutoMaController?color=critical&style=for-the-badge)](https://github.com/3top1a/AutoMaController/blob/master/LICENSE)
 
