@@ -1,5 +1,6 @@
 import socket
 import time
+import datetime
 
 class Agent():
 
@@ -43,7 +44,7 @@ class Agent():
                 self.Dm = str( data[8] ) #[8] = dimension
                 self.XpLevel = str( data[9] ) #[9] = exp level
 
-                btr_data = ( self.Name + " -- Position X: " + self.X + " Y: " + self.Y + " Z: " + self.Z + " in dimension " + self.Dm + "  Health: " + self.Hp + "/" + self.MaxHp + " exp level: " + self.XpLevel)
+                btr_data = ( str( datetime.datetime.now() ) + " -- " + self.Name + " -- Position X: " + self.X + " Y: " + self.Y + " Z: " + self.Z + " in dimension " + self.Dm + "  Health: " + self.Hp + "/" + self.MaxHp + " exp level: " + self.XpLevel)
                 print(btr_data)
             elif (self.Code == "101"):
                 self.Status = 0
