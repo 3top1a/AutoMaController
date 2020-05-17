@@ -53,7 +53,6 @@ class Agent():
                 print("The data is fucked")
             
             #Wait before sending the "send data again please" packet
-            time.sleep(1/5)
             self.s.send(b"110\n")
 
 
