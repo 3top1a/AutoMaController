@@ -1,7 +1,17 @@
-import socket, time, re, multiprocessing
+import socket
+import time
+import datetime
 
-class Agent:
+class Agent():
 
+    IP = None
+    Port = None
+
+    s = None
+    data = None
+    
+    Code = None
+    Status = None
     X = None
     Y = None
     Z = None
@@ -11,48 +21,50 @@ class Agent:
     Dm = None
     XpLevel = None
 
-    Ip = ""
-    Port = 6667
+    def Connect(self):
+        self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.s.connect(('127.0.0.1', 6667))
+        self.s.send(b"\n")
 
-    Status = 0
-    # 0 = main menu
-    # 1 = in-game
+    def Run(self):
+        while(True):
+            data = self.s.recv(1024)
+            print(data)
 
+            """
+            data = str(data).split(' ')
+            self.Code = data[1]
 
-    def run(self):
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            s.connect(("127.0.0.1", 6667))
-            while(True):
-                data = s.recv(1024)
+            if(self.Code == "100"):
+                self.Status = 1
 
-                if not data:
-                    break
+                self.X = str( data[2] ) #[2] = x
+                self.Y = str( data[3] ) #[3] = y
+                self.Z = str( data[4] ) #[4] = z
+                self.Hp = str( data[5] ) #[5] = hp
+                self.MaxHp = str( data[6] ) #[6] = max hp
+                self.Name = str( data[7] ) #[7] = name
+                self.Dm = str( data[8] ) #[8] = dimension
+                self.XpLevel = str( data[9] ) #[9] = exp level
 
-                #parsing
+                btr_data = ( str( datetime.datetime.now() ) + " -- " + self.Name + " -- Position X: " + self.X + " Y: " + self.Y + " Z: " + self.Z + " in dimension " + self.Dm + "  Health: " + self.Hp + "/" + self.MaxHp + " exp level: " + self.XpLevel)
+                print(btr_data)
+            elif (self.Code == "101"):
+                self.Status = 0
+                print("Main menu")
+            else:
+                print("The data is fucked")
+                """
 
-                data = str(data).split(' ')
+    def send(self, datas):
+        self.s.send(bytes(datas + "\n","utf-8"))
 
-                Code = data[1] #[1] = Return code. 100 = SUCCESS : 101 = IN MAIN MENU
+    def DataString(self):
+        dataTemplate = None
 
-                if(Code == "100"):
-                    self.Status = 1
+        if(self.Status == 0):
+            return "Main menu"
+        elif(self.Status == 1):
+            dataTemplate = "Name:\n{}\n \nPosition: \nX: {} \nY: {} \nZ: {} \n\nHealth: \n{} / {}"
 
-                    X = data[2] #[2] = x
-                    Y = data[3] #[3] = y
-                    Z = data[4] #[4] = z
-                    Hp = data[5] #[5] = hp
-                    MaxHp = data[6] #[6] = max hp
-                    Name = data[7] #[7] = name
-                    Dm = data[8] #[8] = dimension
-                    XpLevel = data[9] #[9] = exp level
-
-                    btr_data = ( Name + " -- Position X: " + X + " Y: " + Y + " Z: " + Z + " in dimension " + Dm + "  Health: " + Hp + "/" + MaxHp + " exp level: " + XpLevel)
-                    print(btr_data)
-                else:
-                    self.Status = 0
-                    print("Main menu")
-
-
-                #command = ". toggle freecam"
-
-                #s.send(command.encode())
+            return dataTemplate.format(self.Name, self.X, self.Y, self.Z, self.Hp, self.MaxHp)

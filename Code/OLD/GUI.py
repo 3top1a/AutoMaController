@@ -10,10 +10,13 @@ class GUI(threading.Thread):
     DataLabel = None
     LeftDataReadouts = None
     RightDataSending = None
-    DataFrame = None
+    RightSendingPanel = None
     DataEntry = None
     DataSendButton = None
     LeftAreaFrame = None
+    PacketFreqSlider = None
+    LastPacketFreqSliderValue = None
+    CommandSelectorFrame = None
 
     def __init__(self, _main):
         self.Main = _main
@@ -42,7 +45,7 @@ class GUI(threading.Thread):
         #self.Style.theme_use('alt')
 
         #Left frame
-        self.LeftAreaFrame = tk.Frame(self.root, bg='#333', width=500)
+        self.LeftAreaFrame = tk.Frame(self.root, bg='blue', width=500)
         self.LeftAreaFrame.pack(expand=True, fill='both', side='left')
 
         #Left Data Readouts
@@ -50,19 +53,39 @@ class GUI(threading.Thread):
         self.DataLabel.pack(expand=True, fill='both', side='left')
 
         #Data sending frame
-        self.DataFrame = tk.Frame(self.root, width=100, height=200)
-        self.DataFrame.pack(expand=True, fill='both', side='right')
+        self.RightSendingPanel = tk.Frame(self.root, width=100, height=200)
+        self.RightSendingPanel.pack(expand=True, fill='both', side='right')
+
+        def set_pf(value):
+            print(value)
+            self.Main.Agents[0].send("103-" + value)
 
         def send():
-            self.Main.Agents[0].send(self.DataEntry.get())
-            
+            self.Main.Agents[0].send(self.DataEntry.get())        
+        
+        #Packet frequency slider
+        self.PacketFreqSlider = tk.Scale(self.RightSendingPanel, from_=5, to=30, orient=tk.HORIZONTAL, length = 200, command=set_pf)
+        #The packet sending shit doesnt really work rn due to the shitty socket server implementation
+        #self.PacketFreqSlider.pack()
+        
+        #Command selector - frame
+
+        self.CommandSelectorFrame = tk.Frame(self.RightSendingPanel, height=300, bg="red")
+        self.CommandSelectorFrame.pack(expand=True, fill='both')
+
+        #Command selector - buttons
+
+        #Mode 1 - Chat (local)
+
+        #Mode 2 - TODO
+        
         
         #Button and entry
-        self.DataEntry = tk.Entry(self.DataFrame)
-        self.DataEntry.insert(1, ". toggle freecam")
-        self.DataEntry.pack(side=tk.LEFT)
+        self.DataEntry = tk.Entry(self.RightSendingPanel)
+        self.DataEntry.insert(1, "sample")
+        self.DataEntry.pack(expand=True, fill='x', side=tk.LEFT)
         
-        self.DataSendButton = tk.Button(self.DataFrame, text="Send command", command = send)
+        self.DataSendButton = tk.Button(self.RightSendingPanel, text="Send", command = send)
         self.DataSendButton.pack(side=tk.RIGHT, pady=20)
 
         def update():
@@ -71,6 +94,9 @@ class GUI(threading.Thread):
             self.ChangeDatalabel(to)
             self.root.after(50, update)
 
+        
+        #Finalize
+        self.PacketFreqSlider.set(5)
         self.root.after(50, update)
         self.root.mainloop()
     
