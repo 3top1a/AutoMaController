@@ -50,7 +50,16 @@ class Agent():
             """
             
             pfx = data[1]
-            print(pfx)
+
+            #Parsing based on the prefix
+
+            if(pfx == "105"):
+                #Nothing
+                pass
+            if(pfx == "107"):
+                print(pfx + " - " + str(data))
+            if(pfx == "108"):
+                print("We are in the main menu")
     
     def DataString(self):
         dataTemplate = None
