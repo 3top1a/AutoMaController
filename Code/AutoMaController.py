@@ -2,6 +2,8 @@
 
 import Agent #Local libraries
 
+import os
+
 __author__ = "3top1a"
 __license__ = "MIT"
 __status__ = "Development"
@@ -16,8 +18,13 @@ class Main():
         a = Agent.Agent()
         
         a.Connect()
-
+        a.SendTheDataReq()
         a.Run()
 
 
-main = Main()
+
+try:
+    main = Main()
+except KeyboardInterrupt:
+    print("\nInterrupted")
+    os._exit(os.EX_OK)

@@ -1,6 +1,7 @@
 import socket
 import time
 import datetime
+import threading
 
 class Agent():
 
@@ -28,11 +29,25 @@ class Agent():
     def Send(self, datas):
         self.s.send(bytes(datas + "\n","utf-8"))
 
+    def SendTheDataReq(self):
+        threading.Timer(0.1, self.SendTheDataReq).start()
+        self.Send("106")
+
     def Run(self):
         while(True):
             data = str( self.s.recv(1024) )
 
             data = data.split(' ')
+
+            """ To communicate we use a bunch of prefixes
+            pf. val | Who sends it (we are the client) | a description
+
+            105 - S - Just testing the connection se that we can insult each other.
+            105 - S - Sent every 2 seconds since out.checkError() can only return true if it sends data
+            106 - C - Send me the data
+            107 - S - (Response to 106) Here's the data you faggot
+            108 - S - (Response to 106) We're in the main menu retard
+            """
             
             pfx = data[1]
             print(pfx)
