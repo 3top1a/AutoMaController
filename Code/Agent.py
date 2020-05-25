@@ -30,10 +30,13 @@ class Agent():
 
     def Run(self):
         while(True):
-            data = self.s.recv(1024)
-            print(data)
-            self.Send("RE")
+            data = str( self.s.recv(1024) )
 
+            data = data.split(' ')
+            
+            pfx = data[1]
+            print(pfx)
+    
     def DataString(self):
         dataTemplate = None
 
