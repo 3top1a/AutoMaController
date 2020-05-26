@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 
 import Agent #Local libraries
+import GUI
 
 import os
+import threading
 
 __author__ = "3top1a"
 __license__ = "MIT"
@@ -12,14 +14,17 @@ class Main():
 
     Agents = []
 
+    a = None
+
     def __init__(self):
         #The program starts here
 
-        a = Agent.Agent()
-        
-        a.Connect()
-        a.SendTheDataReq()
-        a.Run()
+        self.a = Agent.Agent()
+
+        self.a.Connect()
+        gui = GUI.GUI(self)
+        self.a.SendTheDataReq()
+        self.a.Run()
 
 
 

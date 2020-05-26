@@ -57,8 +57,22 @@ class Agent():
                 #Nothing
                 pass
             if(pfx == "107"):
-                print(pfx + " - " + str(data))
+                self.Status = 1
+
+                self.X = str( data[2] ) #[2] = x
+                self.Y = str( data[3] ) #[3] = y
+                self.Z = str( data[4] ) #[4] = z
+                self.Hp = str( data[5] ) #[5] = hp
+                self.MaxHp = str( data[6] ) #[6] = max hp
+                self.Name = str( data[7] ) #[7] = name
+                self.Dm = str( data[8] ) #[8] = dimension
+                self.XpLevel = str( data[9] ) #[9] = exp level
+
+                #print(self.DataString())
+
             if(pfx == "108"):
+                self.Status = 0
+
                 print("We are in the main menu")
     
     def DataString(self):
