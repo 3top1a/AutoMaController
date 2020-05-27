@@ -1,4 +1,5 @@
 # AutoMa Craft Controller
+[![Please](https://img.shields.io/static/v1?label=Donate&message=steam&color=lightgrey&style=for-the-badge)](https://steamcommunity.com/tradeoffer/new/?partner=999098564&token=8Qq9r6_0)
 [![yeet](https://img.shields.io/static/v1?label=TRELLO&message=HERE&color=green&style=for-the-badge)](https://trello.com/b/29UigpGP/automacontroller)
 ![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability-percentage/3top1a/AutoMaController?style=for-the-badge)
 ![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/3top1a/AutoMaController?style=for-the-badge)
