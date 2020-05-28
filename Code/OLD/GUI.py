@@ -89,7 +89,7 @@ class GUI(threading.Thread):
         self.DataSendButton.pack(side=tk.RIGHT, pady=20)
 
         def update():
-            to = str( self.Main.Agents[0].DataString() )
+            to = str(self.Main.Agents[0].datastring())
 
             self.ChangeDatalabel(to)
             self.root.after(50, update)

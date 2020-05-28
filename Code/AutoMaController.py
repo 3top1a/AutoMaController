@@ -19,10 +19,10 @@ class Main:
         # The program starts here
         a = Agent.Agent()
 
-        a.Connect()
+        a.connect()
         gui = GUI.GUI()
-        a.SendTheDataReq()
-        a.Run()
+        a.send_data_req()
+        a.run()
 
 
 try:
