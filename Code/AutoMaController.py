@@ -17,12 +17,12 @@ class Main:
 
     def __init__(self):
         # The program starts here
-        a = Agent.Agent()
+        self.a = Agent.Agent()
 
-        a.connect()
-        gui = GUI.GUI()
-        a.send_data_req()
-        a.run()
+        self.a.connect()
+        gui = GUI.GUI(self)
+        self.a.send_data_req()
+        self.a.run()
 
 
 try:
