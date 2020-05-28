@@ -1,6 +1,4 @@
 import socket
-import time
-import datetime
 import threading
 
 class Agent():
@@ -68,7 +66,7 @@ class Agent():
                 self.Dm = str( data[8] ) #[8] = dimension
                 self.XpLevel = str( data[9] ) #[9] = exp level
 
-                #print(self.DataString())
+                print(self.DataString())
 
             if(pfx == "108"):
                 self.Status = 0

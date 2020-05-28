@@ -1,31 +1,28 @@
 #!/usr/bin/env python
 
-import Agent #Local libraries
-import GUI
-
 import os
-import threading
+
+import Agent  # Local libraries
+import GUI
 
 __author__ = "3top1a"
 __license__ = "MIT"
 __status__ = "Development"
 
-class Main():
 
+class Main:
     Agents = []
 
     a = None
 
     def __init__(self):
-        #The program starts here
+        # The program starts here
+        a = Agent.Agent()
 
-        self.a = Agent.Agent()
-
-        self.a.Connect()
-        gui = GUI.GUI(self)
-        self.a.SendTheDataReq()
-        self.a.Run()
-
+        a.Connect()
+        gui = GUI.GUI()
+        a.SendTheDataReq()
+        a.Run()
 
 
 try:
