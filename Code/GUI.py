@@ -1,7 +1,6 @@
 import threading
 import os
 import tkinter as tk
-import tkinter.ttk
 
 
 def quit_callback():
@@ -16,6 +15,9 @@ class GUI(threading.Thread):
     LeftAreaFrame = None
     DataLabel = None
     RightSendingPanel = None
+    CommandSelectorFrame = None
+    DataEntry = None
+    DataSendButton = None
 
     def __init__(self, _main):
         self.Main = _main
@@ -50,6 +52,28 @@ class GUI(threading.Thread):
         self.RightSendingPanel = tk.Frame(self.root, width=100, height=200)
         self.RightSendingPanel.pack(expand=True, fill='both', side='right')
 
+        # Command selector - frame
+
+        self.CommandSelectorFrame = tk.Frame(self.RightSendingPanel, height=300, bg="red")
+        self.CommandSelectorFrame.pack(expand=True, fill='both')
+
+        # Command selector - buttons
+
+        # Mode 1 - Chat (local)
+        # Mode 2 - TODO
+
+        def send():
+            # Mode 1
+            self.Main.a.send("110 " + self.DataEntry.get())
+
+        # Button and entry
+        self.DataEntry = tk.Entry(self.RightSendingPanel)
+        self.DataEntry.insert(1, "sample")
+        self.DataEntry.pack(expand=True, fill='x', side=tk.LEFT)
+
+        self.DataSendButton = tk.Button(self.RightSendingPanel, text="Send", command=send)
+        self.DataSendButton.pack(side=tk.RIGHT, pady=20)
+
         # Finalize
 
         # Make an update loop
@@ -57,6 +81,7 @@ class GUI(threading.Thread):
             to = str(self.Main.a.data_string())
             self.DataLabel.config(text=to)
             self.root.after(50, update)
+
         # Integrate the update loop
         self.root.after(50, update)
         # Main loop

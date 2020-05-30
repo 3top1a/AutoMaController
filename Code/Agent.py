@@ -24,8 +24,8 @@ class Agent:
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.s.connect(('127.0.0.1', 6667))
 
-    def send(self, datas):
-        self.s.send(bytes(datas + "\n", "utf-8"))
+    def send(self, msg):
+        self.s.send(bytes(msg + "\n", "utf-8"))
 
     def send_data_req(self):
         threading.Timer(0.1, self.send_data_req).start()
@@ -66,12 +66,12 @@ class Agent:
                 self.Dm = str(data[8])  # [8] = dimension
                 self.XpLevel = str(data[9])  # [9] = exp level
 
-                print(self.data_string())
+                #print(self.data_string())
 
             if pfx == "108":
                 self.Status = 0
 
-                print("We are in the main menu")
+                #print("We are in the main menu")
 
     def data_string(self):
         if self.Status == 0:
