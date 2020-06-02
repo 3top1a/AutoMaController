@@ -6,7 +6,7 @@
 [![made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 [![GitHub](https://img.shields.io/github/license/3top1a/AutoMaController?color=critical&style=for-the-badge)](https://github.com/3top1a/AutoMaController/blob/master/LICENSE)
 
-The AutoMaCraft system is split into two parts.
+The AutoMaCraft system is split into two parts. <br>
 The AutoMaControlleris what sends commands to an AutoMaMod agent, and receives data back.
 
 ## Donations
