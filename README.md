@@ -7,7 +7,7 @@
 [![GitHub](https://img.shields.io/github/license/3top1a/AutoMaController?color=critical&style=for-the-badge)](https://github.com/3top1a/AutoMaController/blob/master/LICENSE)
 
 The AutoMaCraft system is split into two parts. <br>
-The AutoMaControlleris what sends commands to an AutoMaMod agent, and receives data back.
+The AutoMaController is what sends commands to an AutoMaMod agent, and receives data back.
 
 ## Donations
 All Donations are highly appreciated.<br>
