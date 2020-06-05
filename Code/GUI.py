@@ -1,3 +1,5 @@
+import ScrollableFrame
+
 import threading
 import os
 import tkinter as tk
@@ -18,6 +20,7 @@ class GUI(threading.Thread):
     CommandSelectorFrame = None
     DataEntry = None
     DataSendButton = None
+    HistoryTab = None
 
     def __init__(self, _main):
         self.Main = _main
@@ -52,9 +55,13 @@ class GUI(threading.Thread):
         self.RightSendingPanel = tk.Frame(self.root, width=100, height=200)
         self.RightSendingPanel.pack(expand=True, fill='both', side='right')
 
+        # History tab
+        self.HistoryTab = ScrollableFrame.ScrollableFrame (self.RightSendingPanel, height=50)
+        self.HistoryTab.pack(expand=True, fill='both')
+
         # Command selector - frame
 
-        self.CommandSelectorFrame = tk.Frame(self.RightSendingPanel, height=300, bg="red")
+        self.CommandSelectorFrame = tk.Frame(self.RightSendingPanel, height=150, bg="red")
         self.CommandSelectorFrame.pack(expand=True, fill='both')
 
         # Command selector - buttons
@@ -81,6 +88,7 @@ class GUI(threading.Thread):
             to = str(self.Main.a.data_string())
             self.DataLabel.config(text=to)
             self.root.after(50, update)
+            self.HistoryTab.pack(expand=True, fill='both')
 
         # Integrate the update loop
         self.root.after(50, update)

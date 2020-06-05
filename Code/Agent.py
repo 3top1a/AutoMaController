@@ -45,6 +45,8 @@ class Agent:
             106 - C - Send me the data
             107 - S - (Response to 106) Here's the data you faggot
             108 - S - (Response to 106) We're in the main menu retard
+            109 - S - We just executed the command with {x} prefix (110, etc..)
+            110 - C - Send this in the local chat you pillock
             """
 
             pfx = data[1]
@@ -66,12 +68,12 @@ class Agent:
                 self.Dm = str(data[8])  # [8] = dimension
                 self.XpLevel = str(data[9])  # [9] = exp level
 
-                #print(self.data_string())
+                # print(self.data_string())
 
             if pfx == "108":
                 self.Status = 0
 
-                #print("We are in the main menu")
+                # print("We are in the main menu")
 
     def data_string(self):
         if self.Status == 0:
