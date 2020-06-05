@@ -1,4 +1,5 @@
 import ScrollableFrame
+import HistoryTab
 
 import threading
 import os
@@ -28,6 +29,10 @@ class GUI(threading.Thread):
         gui_thread = threading.Thread(target=self.run)
         gui_thread.start()
 
+    # This function is just for the history tab
+    def send_specific(self, command):
+        self.Main.a.send("110 " + command)
+
     def run(self):
         print("Started GUI")
 
@@ -56,8 +61,8 @@ class GUI(threading.Thread):
         self.RightSendingPanel.pack(expand=True, fill='both', side='right')
 
         # History tab
-        self.HistoryTab = ScrollableFrame.ScrollableFrame (self.RightSendingPanel, height=50)
-        self.HistoryTab.pack(expand=True, fill='both')
+        self.HistoryTab = ScrollableFrame.ScrollableFrame(self.RightSendingPanel, height=50)
+        self.HistoryTab.pack(expand=False, fill='both')
 
         # Command selector - frame
 
@@ -72,6 +77,9 @@ class GUI(threading.Thread):
         def send():
             # Mode 1
             self.Main.a.send("110 " + self.DataEntry.get())
+
+            h = HistoryTab.HistoryTab(self.HistoryTab, self.DataEntry.get(), self)
+            h.pack(side="top", expand=True)
 
         # Button and entry
         self.DataEntry = tk.Entry(self.RightSendingPanel)
