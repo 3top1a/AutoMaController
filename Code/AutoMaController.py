@@ -19,8 +19,9 @@ class Main:
         # The program starts here
         self.a = Agent.Agent()
 
-        self.a.connect()
         gui = GUI.GUI(self)
+
+        self.a.connect()
         self.a.send_data_req()
         self.a.run()
 

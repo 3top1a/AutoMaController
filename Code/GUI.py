@@ -78,7 +78,7 @@ class GUI(threading.Thread):
             # Mode 1
             self.Main.a.send("110 " + self.DataEntry.get())
 
-            h = HistoryTab.HistoryTab(self.HistoryTab, self.DataEntry.get(), self)
+            h = HistoryTab.HistoryTab(self.HistoryTab.scrollable_frame, self.DataEntry.get(), self)
             h.pack(side="top", expand=True)
 
         # Button and entry
