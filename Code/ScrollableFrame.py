@@ -17,9 +17,9 @@ class ScrollableFrame(ttk.Frame):
             )
         )
 
-        canvas.create_window((0, 0), window=self.scrollable_frame, anchor="nw")
+        canvas.create_window((0, 0), window=self.scrollable_frame, anchor="w")
 
         canvas.configure(yscrollcommand=scrollbar.set)
 
-        canvas.pack(side="left", fill="both", expand=True)
+        canvas.pack(side="right", fill="both", expand=True)
         scrollbar.pack(side="right", fill="y")

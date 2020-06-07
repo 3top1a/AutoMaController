@@ -3,8 +3,8 @@ import tkinter as tk
 
 class HistoryTab(tk.Frame):
     def __init__(self, parent, command, main):
-        tk.Frame.__init__(self, parent)
-        self.label = tk.Label(self, text=command)
+        tk.Frame.__init__(self, parent, bg="red")
+        self.label = tk.Label(self, text=command, anchor="w")
         self.label.pack(side="left", fill="both", expand=True)
 
         def click_cb():
