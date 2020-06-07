@@ -22,6 +22,7 @@ class GUI(threading.Thread):
     DataEntry = None
     DataSendButton = None
     HistoryTab = None
+    HistoryLabel = None
 
     def __init__(self, _main):
         self.Main = _main
@@ -59,6 +60,10 @@ class GUI(threading.Thread):
         # Data sending frame
         self.RightSendingPanel = tk.Frame(self.root, width=100, height=200)
         self.RightSendingPanel.pack(expand=True, fill='both', side='right')
+
+        # A simple label because users can be stupid
+        self.HistoryLabel = tk.Label(self.RightSendingPanel, text="History: ")
+        self.HistoryLabel.pack()
 
         # History tab
         self.HistoryTab = ScrollableFrame.ScrollableFrame(self.RightSendingPanel, height=50)
