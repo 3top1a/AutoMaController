@@ -62,6 +62,7 @@ class GUI(threading.Thread):
         self.RightSendingPanel.pack(expand=True, fill='both', side='right')
 
         # A simple label because users can be stupid
+        # https://www.reddit.com/r/linuxmemes/comments/g2cc9d/damn_it/
         self.HistoryLabel = tk.Label(self.RightSendingPanel, text="History: ")
         self.HistoryLabel.pack()
 
