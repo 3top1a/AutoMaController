@@ -11,7 +11,6 @@ def quit_callback():
 
 
 class GUI(threading.Thread):
-
     Main = None
     root = None
 
@@ -72,8 +71,10 @@ class GUI(threading.Thread):
 
         # Command selector - frame
 
-        self.CommandSelectorFrame = tk.Frame(self.RightSendingPanel, height=150, bg="red")
-        self.CommandSelectorFrame.pack(expand=True, fill='both')
+        # TODO add more modes
+
+        # self.CommandSelectorFrame = tk.Frame(self.RightSendingPanel, height=150, bg="red")
+        # self.CommandSelectorFrame.pack(expand=True, fill='both')
 
         # Command selector - buttons
 
