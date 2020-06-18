@@ -13,7 +13,7 @@ def quit_callback():
 class GUI(threading.Thread):
     Main = None
     root = None
-
+    
     LeftAreaFrame = None
     DataLabel = None
     RightSendingPanel = None
